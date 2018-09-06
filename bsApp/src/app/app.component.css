@@ -1,0 +1,33 @@
+.menu {
+	word-spacing: 2rem;
+	opacity: 0;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-top: 0.5rem;
+	position: fixed;
+	z-index: 1;
+	text-align: center;
+	width: 100%;
+	color: #fff;
+}
+
+.menu > span {
+	cursor: pointer;
+}
+
+.div1 {
+    background-size: cover;
+    width: 100%;
+    background: no-repeat center center;
+    padding: 0px;
+    box-shadow: 0rem 1rem 10rem rgba(0,0,0,0.8);
+}
+
+.img-fluid {
+    width: 100%;
+}
+
+.row.kontakt {
+	top: 0;
+	opacity: 0;
+}

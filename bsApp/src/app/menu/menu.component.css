@@ -1,0 +1,11 @@
+.menu {
+	word-spacing: 2rem;
+	opacity: 0;
+	margin-left: -15px;
+	padding-top: 0.5rem;
+	position: fixed;
+	z-index: 1;
+	text-align: center;
+	width: 100%;
+	color: #fff;
+}
