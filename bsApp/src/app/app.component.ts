@@ -7,7 +7,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'baeck';
-  page = 'start';
+  page = 'about';
   animateMenu = false;
 
   images: any[] = [

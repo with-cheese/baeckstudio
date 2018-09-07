@@ -1,9 +1,10 @@
 .menu {
-	word-spacing: 2rem;
+	font-size: 1.1rem;
+	word-spacing: 1.1rem;
 	opacity: 0;
 	margin-left: -15px;
 	margin-right: -15px;
-	padding-top: 0.5rem;
+	padding-top: 0.8rem;
 	position: fixed;
 	z-index: 1;
 	text-align: center;
