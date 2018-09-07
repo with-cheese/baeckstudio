@@ -7,18 +7,22 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'baeck';
-  page = 'portfolio';
+  page = 'start';
   animateMenu = false;
 
   images: any[] = [
-  	{name: '1.jpg'},
-  	{name: '2.jpg'},
-  	{name: '3.jpg'},
-  	{name: '4.jpg'},
-  	{name: '5.jpg'},
-  	{name: '6.jpg'},
-  	{name: '7.jpg'},
-  	{name: '8.jpg'}
+  	{name: 'startsida_bakgrund.png'},
+    {name: 'bildspel_01.png'},
+    {name: 'bildspel_02.png'},
+    {name: 'bildspel_03.png'},
+    {name: 'bildspel_04.png'},
+    {name: 'bildspel_05.png'},
+    {name: 'bildspel_06.png'},
+    {name: 'bildspel_07.png'},
+    {name: 'bildspel_08.png'},
+    {name: 'bildspel_09.png'},
+    {name: 'bildspel_10.png'},
+  	{name: 'bildspel_11.png'}
   ]; 
 
   ngOnInit() {

@@ -4,12 +4,21 @@
     <span (click)="page = 'portfolio'">Portfolio </span>
     <span (click)="page = 'kontakt'">Kontakt </span>
   </div>
-  <div class="row portfolio animated fadeIn" *ngIf="page == 'portfolio'">
+  <div class="row portfolio animated fadeIn" *ngIf="page == 'start'">
     <ng-container *ngFor="let image of images; let i = index">
       <div class="col-6 col-sm-12 div1">
         <img class="img-fluid" [class.hidden]="i != 0" src="../assets/photos/{{image.name}}">
       </div> 
     </ng-container>
+  </div>
+  <div class="row kontakt animated fadeIn" *ngIf="page == 'portfolio'">
+    <div class="col-sm-12 div2">
+      <br>
+      <br>
+      <br>
+      <br>
+      <span>Portolio here.</span>
+    </div>
   </div>
   <div class="row kontakt animated fadeIn" *ngIf="page == 'kontakt'">
     <div class="col-sm-12 div2">
