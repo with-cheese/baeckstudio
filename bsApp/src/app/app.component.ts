@@ -71,16 +71,39 @@ export class AppComponent implements OnInit {
   }
 
   animateWork() {
+    window.scrollTo(0, 0);
     this.animateThis = [];
-    let index = 0;
+    
+    let order = Array.apply(null, {length: this.imagesOversikt.length}).map(function(value, index){
+      return index + 1;
+    });
+    
+    order = this.shuffle(order);
 
-    for (var x = 0, ln = this.imagesOversikt.length; x < ln; x++) {
-      setTimeout(() => {
-        let name = index + '.png';
-        this.animateThis.push(name);
-        index++;
-      }, x * 100, x);
-    }  
+    let index = 0;
+    setTimeout(()=> {
+      for (var x = 0, ln = this.imagesOversikt.length; x < ln; x++) {
+        setTimeout(() => {
+          let name = order[index] + '.png';
+          this.animateThis.push(name);
+          index++;
+        }, x * 100, x);
+      }
+    }, 200);   
+  }
+
+  shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
   }
 
   inAnimateThis(name: string) {

@@ -1,4 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid" [ngClass]="{
+  'bgDark' : page == 'about',
+  'bgWhite' : page == 'work'
+}">
   <div class="menu" [ngClass]="{ 'animated fadeIn' : animateMenu }">
     <span (click)="page = 'work'; animateWork()">Work </span>
     <span (click)="page = 'about'">About </span>
@@ -20,7 +23,7 @@
               'laying' : isStanding(image.name) == false
             }">
               <img class="img-fluid transparent" 
-                [ngClass]="{'animated fadeInDown' : inAnimateThis(image.name)}"
+                [ngClass]="{'animated fadeIn' : inAnimateThis(image.name)}"
                 src="../assets/photos/oversikt/{{image.name}}">
             </div>
           </ng-container>
