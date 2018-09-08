@@ -8,7 +8,9 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'baeck';
   page = 'about';
+  aIndex = 0;
   animateMenu = false;
+  animateThis: string[] = [];
 
   images: any[] = [
   	{name: 'startsida_bakgrund.png', title: '', subtitle: ''},
@@ -25,14 +27,67 @@ export class AppComponent implements OnInit {
   	{name: 'bildspel_11.png', title: 'Swedish Grace', subtitle: 'Book Design'}
   ]; 
 
+  imagesOversikt: any[] = [
+    {name: '1.png', title: 'The Eye', subtitle: 'Book Design'},
+    {name: '2.png', title: 'Näfveqvarn', subtitle: 'Identity Redesign'},
+    {name: '3.png', title: 'Om Döden', subtitle: 'Book Design'},
+    {name: '4.png', title: '+Rolf', subtitle: 'Identity' },
+    {name: '5.png', title: 'The Eye', subtitle: 'Book Design'},
+    {name: '6.png', title: 'Vi hade fel', subtitle: 'Book Design'},
+    {name: '7.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '8.png', title: 'Swedish Grace', subtitle: 'Book Design'},
+    {name: '9.png', title: 'Vi hade fel', subtitle: 'Book Design'},
+    {name: '10.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '11.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '12.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '13.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '14.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '15.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '16.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '17.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '18.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '19.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '20.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '21.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: '22.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+  ]; 
+
   ngOnInit() {
     setTimeout(() => { window.scroll(0,0); }, 400);
   	setTimeout(() => { this.animateMenu = true; }, 500);
-  	
-  	console.log('hej');
   }
 
   getUrl(name: string) {
   	return 'url(../assets/photos/' + name + ')';
   }
+
+  isStanding(name: string) {
+    let img = new Image();
+    img.src = '../assets/photos/oversikt/' + name;
+    if (img.width < img.height) {
+      return true;
+    }
+    return false;
+  }
+
+  animateWork() {
+    this.animateThis = [];
+    let index = 0;
+
+    for (var x = 0, ln = this.imagesOversikt.length; x < ln; x++) {
+      setTimeout(() => {
+        let name = index + '.png';
+        this.animateThis.push(name);
+        index++;
+      }, x * 100, x);
+    }  
+  }
+
+  inAnimateThis(name: string) {
+    if (this.animateThis.indexOf(name) != -1) {
+      return true;
+    }
+  }
+
+
 }

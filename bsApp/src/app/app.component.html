@@ -1,23 +1,38 @@
 <div class="container-fluid">
   <div class="menu" [ngClass]="{ 'animated fadeIn' : animateMenu }">
-    <span (click)="page = 'work'">Work </span>
+    <span (click)="page = 'work'; animateWork()">Work </span>
     <span (click)="page = 'about'">About </span>
     <span (click)="page = 'contact'">Contact </span>
   </div>
-  <div class="row kontakt animated fadeIn" *ngIf="page == 'work'">
+  <div class="row work animated fadeIn" *ngIf="page == 'work'">
     <div class="col-sm-12 div2">
       <br>
       <br>
       <br>
       <br>
       <span>Portolio here.</span>
+      <div class="row">
+        <div class="col-md-8 col-centered">
+          <ng-container *ngFor="let image of imagesOversikt">
+            <div class="imagee" 
+            [ngClass]="{
+              'standing' : isStanding(image.name) == true, 
+              'laying' : isStanding(image.name) == false
+            }">
+              <img class="img-fluid transparent" 
+                [ngClass]="{'animated fadeInDown' : inAnimateThis(image.name)}"
+                src="../assets/photos/oversikt/{{image.name}}">
+            </div>
+          </ng-container>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row portfolio animated fadeIn" *ngIf="page == 'about'">
+  <div class="row start animated fadeIn" *ngIf="page == 'about'">
     <ng-container *ngFor="let image of images; let i = index">
       <div class="col-12 div1" [class.hidden]="i != 0">
         <div class="title-wrapper">
-          <div class="title">{{ image.title }}</div>
+          <div class="title" (click)="checkImageDimension(image.name)">{{ image.title }}</div>
           <div class="sub-title">{{ image.subtitle }}</div>
         </div>
         <img class="img-fluid" src="../assets/photos/{{image.name}}">
