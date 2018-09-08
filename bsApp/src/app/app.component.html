@@ -15,8 +15,17 @@
   </div>
   <div class="row portfolio animated fadeIn" *ngIf="page == 'about'">
     <ng-container *ngFor="let image of images; let i = index">
-      <div class="col-6 col-sm-12 div1">
-        <img class="img-fluid" [class.hidden]="i != 0" src="../assets/photos/{{image.name}}">
+      <div class="col-12 div1" [class.hidden]="i != 0">
+        <div class="title-wrapper">
+          <div class="title">{{ image.title }}</div>
+          <div class="sub-title">{{ image.subtitle }}</div>
+        </div>
+        <img class="img-fluid" src="../assets/photos/{{image.name}}">
+        <div class="intro-text" *ngIf="i == 0">
+          Welcome to Bäck! A design studio based in Stockholm, Sweden.<br>
+          We offer graphic design, branding and art direction for cultural and commercial
+          clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
+        </div>
       </div> 
     </ng-container>
   </div>

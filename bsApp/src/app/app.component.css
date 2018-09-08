@@ -32,3 +32,21 @@
 	top: 0;
 	opacity: 0;
 }
+
+.title-wrapper {
+	padding-top: 1rem;
+	z-index: 1;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.intro-text {
+	text-align: center;
+	position: absolute;
+	margin-left:-17.5rem;
+    bottom: 1rem;
+    width: 35rem;
+    left:50%;
+}

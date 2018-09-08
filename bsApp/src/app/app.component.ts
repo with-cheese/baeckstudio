@@ -11,18 +11,18 @@ export class AppComponent implements OnInit {
   animateMenu = false;
 
   images: any[] = [
-  	{name: 'startsida_bakgrund.png'},
-    {name: 'bildspel_01.png'},
-    {name: 'bildspel_02.png'},
-    {name: 'bildspel_03.png'},
-    {name: 'bildspel_04.png'},
-    {name: 'bildspel_05.png'},
-    {name: 'bildspel_06.png'},
-    {name: 'bildspel_07.png'},
-    {name: 'bildspel_08.png'},
-    {name: 'bildspel_09.png'},
-    {name: 'bildspel_10.png'},
-  	{name: 'bildspel_11.png'}
+  	{name: 'startsida_bakgrund.png', title: '', subtitle: ''},
+    {name: 'bildspel_01.png', title: 'The Eye', subtitle: 'Book Design'},
+    {name: 'bildspel_02.png', title: 'Näfveqvarn', subtitle: 'Identity Redesign'},
+    {name: 'bildspel_03.png', title: 'Om Döden', subtitle: 'Book Design'},
+    {name: 'bildspel_04.png', title: '+Rolf', subtitle: 'Identity' },
+    {name: 'bildspel_05.png', title: 'The Eye', subtitle: 'Book Design'},
+    {name: 'bildspel_06.png', title: 'Vi hade fel', subtitle: 'Book Design'},
+    {name: 'bildspel_07.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {name: 'bildspel_08.png', title: 'Swedish Grace', subtitle: 'Book Design'},
+    {name: 'bildspel_09.png', title: 'Vi hade fel', subtitle: 'Book Design'},
+    {name: 'bildspel_10.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+  	{name: 'bildspel_11.png', title: 'Swedish Grace', subtitle: 'Book Design'}
   ]; 
 
   ngOnInit() {
