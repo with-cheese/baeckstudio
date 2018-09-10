@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
     animate =  false;
-
+    page = null;
     constructor() { }
 
     ngOnInit() {

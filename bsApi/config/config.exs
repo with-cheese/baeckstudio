@@ -12,8 +12,8 @@ config :bsApi,
 # Configures the endpoint
 config :bsApi, BsApiWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "t1yz01RKRNnOoKiwa6JAOyi3vedA8DweqWUEvgtuACjRLxnuWCABUGurJPmrE/XV",
-  render_errors: [view: BsApiWeb.ErrorView, accepts: ~w(html json)],
+  secret_key_base: "Wsxvg18Kon2bUrTpDcKrkO2Z0QsnTmwrP91zQLjz4q/gAPIPgVr3dRYOYuApDs8E",
+  render_errors: [view: BsApiWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: BsApi.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

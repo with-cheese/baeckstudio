@@ -29,17 +29,6 @@ config :bsApi, BsApiWeb.Endpoint,
 # configured to run both http and https servers on
 # different ports.
 
-# Watch static and templates for browser reloading.
-config :bsApi, BsApiWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
-      ~r{priv/gettext/.*(po)$},
-      ~r{lib/bsApi_web/views/.*(ex)$},
-      ~r{lib/bsApi_web/templates/.*(eex)$}
-    ]
-  ]
-
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
@@ -50,8 +39,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :bsApi, BsApi.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "bssql",
+  password: "bssql",
   database: "bsapi_dev",
   hostname: "localhost",
   pool_size: 10
