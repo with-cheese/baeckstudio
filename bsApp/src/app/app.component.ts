@@ -9,7 +9,9 @@ export class AppComponent implements OnInit {
   title = 'baeck';
   page = 'about';
   aIndex = 0;
+  selectedProject = null;
   animateMenu = false;
+  debug = false;
   animateThis: string[] = [];
 
   images: any[] = [
@@ -50,7 +52,23 @@ export class AppComponent implements OnInit {
     {name: '20.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
     {name: '21.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
     {name: '22.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-  ]; 
+  ];
+
+  theEye: any = {
+    images: [
+      {id: 1, url: 'the_eye/The_Eye_02.png', width: 29, alignment: 'left', distance: 10, top: 0},
+      {id: 2, url: 'the_eye/The_Eye_01.png', width: 53, alignment: 'right', distance: 0, top: -10},
+      {id: 3, url: 'the_eye/The_Eye_03.png', width: 50, alignment: 'right', distance: 41, top: 7},
+      {id: 5, url: 'the_eye/The_Eye_05.png', width: 31, alignment: 'right', distance: 0, top: -22},
+      {id: 6, url: 'the_eye/The_Eye_06.png', width: 50, alignment: 'left', distance: 0, top: -12},
+      {id: 7, url: 'the_eye/The_Eye_07.png', width: 66, alignment: 'right', distance: 13, top: 7}
+      {id: 4, url: 'the_eye/The_Eye_04.png', width: 50, alignment: 'right', distance: 0, top: 9},
+      ],
+    name: 'The eye by fotografiska',
+    type: 'Book Design',
+    info: 'The Eye is a provocative, absurd, beautiful and revolutionary book celebrating the spirit of Fotografiska – the museum of contemporary photography in Stockholm. The book features work from iconic photographers including Ellen von Unwerth, Anton Corbijn, Sarah Moon and Guy Bourdin as well as interviews, anecdotes and behind-the-scenes stories of past Fotografiska exhibitions. Curator and Creative Director: Johan Lindskog. Published by teNeues 2018.'
+  }
+
 
   ngOnInit() {
     setTimeout(() => { window.scroll(0,0); }, 400);
@@ -69,6 +87,12 @@ export class AppComponent implements OnInit {
     }
     return false;
   }
+
+  getProject() {
+    this.page = 'project';
+    this.selectedProject = this.theEye;
+  }
+
 
   animateWork() {
     window.scrollTo(0, 0);
@@ -112,5 +136,23 @@ export class AppComponent implements OnInit {
     }
   }
 
+  adjustImage(value: number, id: number, type: string) {
+    const index = this.theEye.images.findIndex(obj => obj.id == id);
+    console.log(index);
+    this.theEye.images[index][type] = value;
+  }
+
+  changeAlignment(image: any) {
+    if (image.alignment == 'left') {
+      image.alignment = 'right';
+    } else {
+      image.alignment = 'left';
+    }
+  }
+
+  devmode() {
+    this.debug = !this.debug;
+    console.log(this);
+  }
 
 }

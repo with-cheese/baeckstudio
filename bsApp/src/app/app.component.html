@@ -1,6 +1,6 @@
 <div class="container-fluid" [ngClass]="{
   'bgDark' : page == 'about',
-  'bgWhite' : page == 'work'
+  'bgWhite' : page != 'about'
 }">
   <div class="menu" [ngClass]="{ 'animated fadeIn' : animateMenu }">
     <span (click)="page = 'work'; animateWork()">Work </span>
@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-md-8 col-centered">
           <ng-container *ngFor="let image of imagesOversikt">
-            <div class="imagee" 
+            <div class="imagee" (click)="getProject()"
             [ngClass]="{
               'standing' : isStanding(image.name) == true, 
               'laying' : isStanding(image.name) == false
@@ -59,6 +59,53 @@
       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+    </div>
+  </div>
+  <div class="row project animated fadeIn" *ngIf="page == 'project' && selectedProject != null">
+    <div class="col-sm-12 div2">
+      <br>
+      <br>
+      <div class="name">{{ selectedProject.name }}</div>
+      <div class="type">{{ selectedProject.type }}</div>
+      <div class="info">{{ selectedProject.info }}</div>
+      <button class="btn btn-secondary" (click)="devmode()">DEVMODE</button>
+      <br>
+      <br>
+      <div class="image-wrapper" *ngFor="let image of selectedProject.images"
+        [ngStyle]="{'margin-top': image.top + '%'}"
+        [ngClass]="{'debug' : debug}">
+        <img
+          class="invisible"
+          [ngStyle]="{'width': image.width + '%'}"
+          src="../assets/photos/projects/{{image.url}}">
+        <img
+          class="absolute"
+          [ngClass]="{'animated fadeIn' : inAnimateThis(image.name)}"
+          [ngStyle]="{
+            'width': (image.width + '%'), 
+            'left': (image.alignment == 'left' ? (image.distance + '%') : 'inherit'), 
+            'right': (image.alignment == 'right' ? (image.distance + '%') : 'inherit') 
+          }"
+          src="../assets/photos/projects/{{image.url}}">
+          <div class="controls" *ngIf="debug">
+            <ng-container>
+              <label>Width</label>
+              <input class="form-control" type="number" value="{{ image.width }}" name="" 
+              (change)="adjustImage($event.target.value, image.id, 'width')">
+            </ng-container>
+            <ng-container>
+              <label>Distance</label>
+              <input class="form-control" type="number" value="{{ image.distance }}" name="{{ image.distance }}" 
+              (change)="adjustImage($event.target.value, image.id, 'distance')">
+            </ng-container>
+            <ng-container>
+              <label>Top</label>
+              <input class="form-control" type="number" value="{{ image.top }}" name="{{ image.top }}" 
+              (change)="adjustImage($event.target.value, image.id, 'top')">
+            </ng-container>
+            <button type="button" class="btn btn-secondary" (click)="changeAlignment(image)">{{ image.alignment }}</button>
+          </div>
+      </div>
     </div>
   </div>
 </div>
