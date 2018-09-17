@@ -1,15 +1,15 @@
 defmodule BsApiWeb.WorkControllerTest do
   use BsApiWeb.ConnCase
 
-  alias BsApi.Photos
-  alias BsApi.Photos.Work
+  alias BsApi.Projects
+  alias BsApi.Projects.Work
 
-  @create_attrs %{description: "some description", filename: "some filename", title: "some title"}
-  @update_attrs %{description: "some updated description", filename: "some updated filename", title: "some updated title"}
-  @invalid_attrs %{description: nil, filename: nil, title: nil}
+  @create_attrs %{name: "some name"}
+  @update_attrs %{name: "some updated name"}
+  @invalid_attrs %{name: nil}
 
   def fixture(:work) do
-    {:ok, work} = Photos.create_work(@create_attrs)
+    {:ok, work} = Projects.create_work(@create_attrs)
     work
   end
 
@@ -32,9 +32,7 @@ defmodule BsApiWeb.WorkControllerTest do
       conn = get conn, work_path(conn, :show, id)
       assert json_response(conn, 200)["data"] == %{
         "id" => id,
-        "description" => "some description",
-        "filename" => "some filename",
-        "title" => "some title"}
+        "name" => "some name"}
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -53,9 +51,7 @@ defmodule BsApiWeb.WorkControllerTest do
       conn = get conn, work_path(conn, :show, id)
       assert json_response(conn, 200)["data"] == %{
         "id" => id,
-        "description" => "some updated description",
-        "filename" => "some updated filename",
-        "title" => "some updated title"}
+        "name" => "some updated name"}
     end
 
     test "renders errors when data is invalid", %{conn: conn, work: work} do

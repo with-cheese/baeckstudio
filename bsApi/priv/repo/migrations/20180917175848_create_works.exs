@@ -3,9 +3,7 @@ defmodule BsApi.Repo.Migrations.CreateWorks do
 
   def change do
     create table(:works) do
-      add :filename, :string
-      add :description, :string
-      add :title, :string
+      add :name, :string
 
       timestamps()
     end

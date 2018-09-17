@@ -8,5 +8,9 @@ defmodule BsApiWeb.Router do
   scope "/api", BsApiWeb do
     pipe_through :api
     get "/works", WorkController, :index
+    get "/works/:id", WorkController, :show
+    get "/works/images", WorkImageController, :index
+    get "/works/text", WorkTextController, :index
+    get "/works/image/positions", WorkImagePositionController, :index
   end
 end

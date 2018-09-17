@@ -12,8 +12,6 @@ defmodule BsApiWeb.WorkView do
 
   def render("work.json", %{work: work}) do
     %{id: work.id,
-      filename: work.filename,
-      description: work.description,
-      title: work.title}
+      name: work.name}
   end
 end
