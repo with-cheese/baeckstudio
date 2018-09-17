@@ -4,7 +4,7 @@ defmodule BsApi.Projects.WorkImage do
 
 
   schema "work_images" do
-    field :fileName, :string
+    field :file_name, :string
     field :work_id, :id
 
     timestamps()
@@ -13,7 +13,7 @@ defmodule BsApi.Projects.WorkImage do
   @doc false
   def changeset(work_image, attrs) do
     work_image
-    |> cast(attrs, [:fileName])
-    |> validate_required([:fileName])
+    |> cast(attrs, [:file_name])
+    |> validate_required([:file_name])
   end
 end

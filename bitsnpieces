@@ -1,5 +1,5 @@
 ### manual start postgres on macos
 pg_ctl -D /usr/local/var/postgres start
 
-### manul stop postgres on macos
+### manual stop postgres on macos
 pg_ctl -D /usr/local/var/postgres stop

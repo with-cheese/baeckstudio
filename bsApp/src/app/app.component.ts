@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     {name: 'bildspel_09.png', title: 'Vi hade fel', subtitle: 'Book Design'},
     {name: 'bildspel_10.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
   	{name: 'bildspel_11.png', title: 'Swedish Grace', subtitle: 'Book Design'}
-  ]; 
+  ];
 
   imagesOversikt: any[] = [
     {name: '1.png', title: 'The Eye', subtitle: 'Book Design'},
@@ -61,8 +61,8 @@ export class AppComponent implements OnInit {
       {id: 3, url: 'the_eye/The_Eye_03.png', width: 50, alignment: 'right', distance: 41, top: 7},
       {id: 5, url: 'the_eye/The_Eye_05.png', width: 31, alignment: 'right', distance: 0, top: -22},
       {id: 6, url: 'the_eye/The_Eye_06.png', width: 50, alignment: 'left', distance: 0, top: -12},
-      {id: 7, url: 'the_eye/The_Eye_07.png', width: 66, alignment: 'right', distance: 13, top: 7}
-      {id: 4, url: 'the_eye/The_Eye_04.png', width: 50, alignment: 'right', distance: 0, top: 9},
+      {id: 7, url: 'the_eye/The_Eye_07.png', width: 66, alignment: 'right', distance: 13, top: 7},
+      {id: 4, url: 'the_eye/The_Eye_04.png', width: 50, alignment: 'right', distance: 0, top: 9}
       ],
     name: 'The eye by fotografiska',
     type: 'Book Design',
@@ -97,11 +97,11 @@ export class AppComponent implements OnInit {
   animateWork() {
     window.scrollTo(0, 0);
     this.animateThis = [];
-    
+
     let order = Array.apply(null, {length: this.imagesOversikt.length}).map(function(value, index){
       return index + 1;
     });
-    
+
     order = this.shuffle(order);
 
     let index = 0;
@@ -113,7 +113,7 @@ export class AppComponent implements OnInit {
           index++;
         }, x * 100, x);
       }
-    }, 200);   
+    }, 200);
   }
 
   shuffle(array) {
