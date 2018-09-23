@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
   selectedProject = null;
   animateMenu = false;
   debug = false;
+  works: any;
   animateThis: string[] = [];
 
   images: any[] = [
@@ -69,10 +71,22 @@ export class AppComponent implements OnInit {
     info: 'The Eye is a provocative, absurd, beautiful and revolutionary book celebrating the spirit of Fotografiska – the museum of contemporary photography in Stockholm. The book features work from iconic photographers including Ellen von Unwerth, Anton Corbijn, Sarah Moon and Guy Bourdin as well as interviews, anecdotes and behind-the-scenes stories of past Fotografiska exhibitions. Curator and Creative Director: Johan Lindskog. Published by teNeues 2018.'
   }
 
+  constructor(private apiService: ApiService) {}
+
 
   ngOnInit() {
     setTimeout(() => { window.scroll(0,0); }, 400);
   	setTimeout(() => { this.animateMenu = true; }, 500);
+    this.getWorks();
+  }
+
+  getWorks() {
+    this.apiService.fetch('works')
+        .subscribe(result      => this.works = result[0].data,
+                   error       => { },
+                   ()          => {
+                       console.log(this.works)
+                   });
   }
 
   getUrl(name: string) {
