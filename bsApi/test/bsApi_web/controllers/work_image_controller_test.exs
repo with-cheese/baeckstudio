@@ -4,9 +4,9 @@ defmodule BsApiWeb.WorkImageControllerTest do
   alias BsApi.Projects
   alias BsApi.Projects.WorkImage
 
-  @create_attrs %{fileName: "some fileName"}
-  @update_attrs %{fileName: "some updated fileName"}
-  @invalid_attrs %{fileName: nil}
+  @create_attrs %{file_name: "some file_name"}
+  @update_attrs %{file_name: "some updated file_name"}
+  @invalid_attrs %{file_name: nil}
 
   def fixture(:work_image) do
     {:ok, work_image} = Projects.create_work_image(@create_attrs)
@@ -32,7 +32,7 @@ defmodule BsApiWeb.WorkImageControllerTest do
       conn = get conn, work_image_path(conn, :show, id)
       assert json_response(conn, 200)["data"] == %{
         "id" => id,
-        "fileName" => "some fileName"}
+        "file_name" => "some file_name"}
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -51,7 +51,7 @@ defmodule BsApiWeb.WorkImageControllerTest do
       conn = get conn, work_image_path(conn, :show, id)
       assert json_response(conn, 200)["data"] == %{
         "id" => id,
-        "fileName" => "some updated fileName"}
+        "file_name" => "some updated file_name"}
     end
 
     test "renders errors when data is invalid", %{conn: conn, work_image: work_image} do

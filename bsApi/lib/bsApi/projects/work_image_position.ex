@@ -4,8 +4,11 @@ defmodule BsApi.Projects.WorkImagePosition do
 
 
   schema "work_image_positions" do
-    field :position, :integer
     field :work_image_id, :id
+    field :width, :integer
+    field :alignment, :string
+    field :distance, :integer
+    field :top, :integer
 
     timestamps()
   end

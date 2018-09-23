@@ -5,6 +5,7 @@ defmodule BsApi.Projects.Work do
 
   schema "works" do
     field :name, :string
+    field :active, :boolean
 
     timestamps()
   end

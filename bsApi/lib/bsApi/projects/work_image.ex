@@ -6,6 +6,9 @@ defmodule BsApi.Projects.WorkImage do
   schema "work_images" do
     field :file_name, :string
     field :work_id, :id
+    field :title, :string
+    field :sub_title, :string
+    field :active, :boolean
 
     timestamps()
   end
