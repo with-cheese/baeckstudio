@@ -13,7 +13,6 @@
       <br>
       <br>
       <br>
-      <span>Portolio here.</span>
       <div class="row">
         <div class="col-md-8 col-centered">
           <ng-container *ngFor="let image of imagesOversikt">
@@ -87,24 +86,24 @@
             'right': (image.alignment == 'right' ? (image.distance + '%') : 'inherit') 
           }"
           src="../assets/photos/projects/{{image.url}}">
-          <div class="controls" *ngIf="debug">
-            <ng-container>
-              <label>Width</label>
-              <input class="form-control" type="number" value="{{ image.width }}" name="" 
-              (change)="adjustImage($event.target.value, image.id, 'width')">
-            </ng-container>
-            <ng-container>
-              <label>Distance</label>
-              <input class="form-control" type="number" value="{{ image.distance }}" name="{{ image.distance }}" 
-              (change)="adjustImage($event.target.value, image.id, 'distance')">
-            </ng-container>
-            <ng-container>
-              <label>Top</label>
-              <input class="form-control" type="number" value="{{ image.top }}" name="{{ image.top }}" 
-              (change)="adjustImage($event.target.value, image.id, 'top')">
-            </ng-container>
-            <button type="button" class="btn btn-secondary" (click)="changeAlignment(image)">{{ image.alignment }}</button>
-          </div>
+        <div class="controls" *ngIf="debug">
+          <ng-container>
+            <label>Width</label>
+            <input class="form-control" type="number" value="{{ image.width }}" name="" 
+            (change)="adjustImage($event.target.value, image.id, 'width')">
+          </ng-container>
+          <ng-container>
+            <label>Distance</label>
+            <input class="form-control" type="number" value="{{ image.distance }}" name="{{ image.distance }}" 
+            (change)="adjustImage($event.target.value, image.id, 'distance')">
+          </ng-container>
+          <ng-container>
+            <label>Top</label>
+            <input class="form-control" type="number" value="{{ image.top }}" name="{{ image.top }}" 
+            (change)="adjustImage($event.target.value, image.id, 'top')">
+          </ng-container>
+          <button type="button" class="btn btn-secondary" (click)="changeAlignment(image)">{{ image.alignment }}</button>
+        </div>
       </div>
     </div>
   </div>

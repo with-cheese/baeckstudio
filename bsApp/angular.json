@@ -28,10 +28,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/script.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+              "src/assets/js/script.js"            ]
           },
           "configurations": {
             "production": {

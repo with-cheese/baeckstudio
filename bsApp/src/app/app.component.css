@@ -84,7 +84,6 @@
 .work .imagee { 
     margin       : 0.5%;
     display      : inline-block;
-    margin-bottom: 0.4rem;
 }
 
 .work  .transparent { opacity: 0; }
@@ -151,4 +150,15 @@ button {
     .work .imagee {
         margin-right: 0;
     } 
+    .project img.invisible {
+        display: none;
+    }
+    .project img.absolute {
+       width: 100% !important;
+       position: static !important; 
+    }
+    .project .image-wrapper {
+        margin-top: 0px !important;
+        margin: inherit;
+    }
 }
