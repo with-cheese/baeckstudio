@@ -41,3 +41,11 @@ var animateHTML = function () {
 
 setTimeout(function() {animateHTML().init();}, 500)
 
+document.addEventListener('DOMContentLoaded', function() {
+  $('.carousel').carousel({
+    interval: 3000,
+    pause: false
+  })
+}, false);
+
+

@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
   animateThis: string[] = [];
 
   images: any[] = [
-  	{name: 'startsida_bakgrund.png', title: '', subtitle: ''},
     {name: 'bildspel_01.png', title: 'The Eye', subtitle: 'Book Design'},
     {name: 'bildspel_02.png', title: 'Näfveqvarn', subtitle: 'Identity Redesign'},
     {name: 'bildspel_03.png', title: 'Om Döden', subtitle: 'Book Design'},
@@ -162,6 +161,22 @@ export class AppComponent implements OnInit {
     } else {
       image.alignment = 'left';
     }
+  }
+
+  showOverlay(image: any) {
+    setTimeout(() => {image.overlay = true}, 10);
+  }
+
+  imageIsNotInViewPort(id: any) {
+      let elem = document.getElementById(id);
+      if (elem) {
+        let top = elem.scrollTop;
+        console.log(top);
+        if (top > window.innerHeight) {
+          return true;
+        }
+      }
+      return false;
   }
 
   devmode() {

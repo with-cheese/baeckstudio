@@ -16,14 +16,24 @@
       <div class="row">
         <div class="col-md-8 col-centered">
           <ng-container *ngFor="let image of imagesOversikt">
-            <div class="imagee" (click)="getProject()"
-            [ngClass]="{
-              'standing' : isStanding(image.name) == true, 
-              'laying' : isStanding(image.name) == false
-            }">
-              <img class="img-fluid transparent" 
-                [ngClass]="{'animated fadeIn' : inAnimateThis(image.name)}"
-                src="../assets/photos/oversikt/{{image.name}}">
+            <div class="image-wrapper transparent"
+              [ngClass]="{
+                'animated fadeInDown' : inAnimateThis(image.name),
+                'standing' : isStanding(image.name) == true,
+                'laying' : isStanding(image.name) == false
+              }"
+              (mouseleave)="image.overlay = false">
+              <div *ngIf="image.overlay == true"
+                class="image-overlay animated faster fadeIn"
+                (click)="getProject(); image.overlay = false;">
+                test
+              </div>
+              <div class="imagee"
+                (mouseover)="showOverlay(image)" 
+                (click)="image.overlay = !image.overlay">
+                <img class="img-fluid"
+                  src="../assets/photos/oversikt/{{image.name}}">
+              </div>
             </div>
           </ng-container>
         </div>
@@ -31,20 +41,53 @@
     </div>
   </div>
   <div class="row start animated fadeIn" *ngIf="page == 'about'">
-    <ng-container *ngFor="let image of images; let i = index">
-      <div class="col-12 div1" [class.hidden]="i != 0">
-        <div class="title-wrapper">
-          <div class="title" (click)="checkImageDimension(image.name)">{{ image.title }}</div>
-          <div class="sub-title">{{ image.subtitle }}</div>
+    <div class="col-12 div1 animated fadeIn">
+      <img class="img-fluid" src="../assets/photos/startsida_bakgrund.png">
+      <div class="intro-text">
+        Welcome to Bäck! A design studio based in Stockholm, Sweden.<br>
+        We offer graphic design, branding and art direction for cultural and commercial
+        clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
+      </div>
+    </div> 
+    <ng-container>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <!-- ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol -->
+        <div class="carousel-inner">
+          <ng-container *ngFor="let image of images; let i = index">
+            <div class="carousel-item active" [class.active]="i == 0">
+              <div class="carousel-caption">
+                <div>{{ image.title }}</div>
+                <div>{{ image.subtitle }}</div>
+              </div>
+              <img class="d-block w-100" src="../assets/photos/{{ image.name }}" alt="First slide">
+            </div>
+          </ng-container>
         </div>
-        <img class="img-fluid" src="../assets/photos/{{image.name}}">
-        <div class="intro-text" *ngIf="i == 0">
-          Welcome to Bäck! A design studio based in Stockholm, Sweden.<br>
-          We offer graphic design, branding and art direction for cultural and commercial
-          clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
-        </div>
-      </div> 
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </ng-container>
+    <div class="images-vertical">
+      <ng-container *ngFor="let image of images; let i = index">
+        <div class="col-12 div1 hidden">
+          <div class="title-wrapper animated fadeIn">
+            <div class="title" (click)="checkImageDimension(image.name)">{{ image.title }}</div>
+            <div class="sub-title">{{ image.subtitle }}</div>
+          </div>
+          <img class="img-fluid" src="../assets/photos/{{image.name}}">
+        </div> 
+      </ng-container>
+    </div>
   </div>
   <div class="row kontakt animated fadeIn" *ngIf="page == 'contact'">
     <div class="col-sm-12 div2">
@@ -65,12 +108,11 @@
       <br>
       <br>
       <div class="name">{{ selectedProject.name }}</div>
-      <div class="type">{{ selectedProject.type }}</div>
+      <div class="type" (dblclick)="devmode()">{{ selectedProject.type }}</div>
       <div class="info">{{ selectedProject.info }}</div>
-      <button class="btn btn-secondary" (click)="devmode()">DEVMODE</button>
       <br>
       <br>
-      <div class="image-wrapper" *ngFor="let image of selectedProject.images"
+      <div class="image-wrapper" *ngFor="let image of selectedProject.images; let i = index;"
         [ngStyle]="{'margin-top': image.top + '%'}"
         [ngClass]="{'debug' : debug}">
         <img
@@ -78,8 +120,11 @@
           [ngStyle]="{'width': image.width + '%'}"
           src="../assets/photos/projects/{{image.url}}">
         <img
-          class="absolute"
-          [ngClass]="{'animated fadeIn' : inAnimateThis(image.name)}"
+          id="{{image.id}}" class="absolute hidden"
+          [ngClass]="{
+            'animated fadeIn' : inAnimateThis(image.name),
+            'hidden' : i > 1
+          }"
           [ngStyle]="{
             'width': (image.width + '%'), 
             'left': (image.alignment == 'left' ? (image.distance + '%') : 'inherit'), 

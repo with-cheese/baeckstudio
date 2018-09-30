@@ -1,5 +1,6 @@
 .container-fluid.bgDark {
     background-color: #333;
+    min-height: 1000px;
 }
 
 .container-fluid.bgWhite {
@@ -35,6 +36,10 @@
 
 .menu > span {
     cursor: pointer;
+}
+
+.images-vertical {
+    display: none;
 }
 
 .div1 {
@@ -81,9 +86,21 @@
     max-width: 48%;
 }
 
-.work .imagee { 
+.work .image-wrapper {
+    position: relative; 
     margin       : 0.5%;
     display      : inline-block;
+}
+
+.work .image-overlay {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    height: 100%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .work  .transparent { opacity: 0; }
@@ -139,6 +156,11 @@
     margin-bottom: 1rem;
 }
 
+.start .carousel-caption {
+    top: 0px;
+    bottom: inherit;
+}
+
 button {
     margin-top: 0.5rem;
 }
@@ -160,5 +182,11 @@ button {
     .project .image-wrapper {
         margin-top: 0px !important;
         margin: inherit;
+    }
+    .carousel {
+        display: none;
+    }
+    .images-vertical {
+        display: block;
     }
 }
