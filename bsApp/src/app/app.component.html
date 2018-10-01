@@ -1,12 +1,15 @@
 <div class="container-fluid" [ngClass]="{
-  'bgDark' : page == 'about',
-  'bgWhite' : page != 'about'
+  'bg-dark' : page == 'about',
+  'bg-white' : page != 'about'
 }">
+
+  <!-- MENU -->
   <div class="menu" [ngClass]="{ 'animated fadeIn' : animateMenu }">
     <span (click)="page = 'work'; animateWork();">Work </span>
     <span (click)="page = 'about'; initCarousel();">About </span>
     <span (click)="page = 'contact'">Contact </span>
   </div>
+
 
   <!-- START PAGE -->
   <div class="row start animated fadeIn" *ngIf="page == 'about'">
@@ -55,7 +58,8 @@
     </div>
   </div>
 
-  <!-- WORK PAGE -->
+
+  <!-- WORK-OVERVIEW PAGE -->
   <div class="row work animated fadeIn" *ngIf="page == 'work'">
     <div class="col-sm-12 div2">
       <br>
@@ -93,6 +97,7 @@
     </div>
   </div>
 
+
   <!-- CONTACT PAGE -->
   <div class="row kontakt animated fadeIn" *ngIf="page == 'contact'">
     <div class="col-sm-8 col-centered alignCenter">
@@ -108,6 +113,9 @@
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
     </div>
   </div>
+
+
+  <!-- INDIVIDUAL PROJECT PAGE -->
   <div class="row project animated fadeIn" *ngIf="page == 'project' && selectedProject != null">
     <div class="col-sm-12 div2">
       <br>

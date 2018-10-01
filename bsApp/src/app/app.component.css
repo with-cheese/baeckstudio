@@ -1,24 +1,19 @@
-.container-fluid.bgDark {
+.container-fluid.bg-dark {
     background-color: #333;
-    min-height: 1000px;
+    min-height      : 1000px;
 }
 
-.container-fluid.bgWhite {
+.container-fluid.bg-white {
     background-color: #fff;
+    color           : #000;
+}
+
+.bg-white .menu {
     color: #000;
 }
 
-.bgWhite .menu {
-    color: #000;
-}
-
-.bgDark .menu {
+.bg-dark .menu {
     color: #fff;
-}
-
-.col-centered {
-    margin: 0 auto;
-    float : none;
 }
 
 .menu {
@@ -38,11 +33,8 @@
     cursor: pointer;
 }
 
-.images-vertical {
-    display: none;
-}
 
-.div1 {
+.start .div1 {
     background-size: cover;
     width          : 100%;
     background     : no-repeat center center;
@@ -50,16 +42,15 @@
     box-shadow     : 0rem 1rem 10rem rgba(0,0,0,0.8);
 }
 
+.start .images-vertical {
+    display: none;
+}
+
 .start .img-fluid {
     width: 100%;
 }
 
-.row.kontakt {
-    top    : 0;
-    opacity: 0;
-}
-
-.title-wrapper {
+.start .title-wrapper {
     padding-top: 1rem;
     z-index    : 1;
     position   : absolute;
@@ -68,7 +59,7 @@
     width      : 100%;
 }
 
-.intro-text-large {
+.start .intro-text-large {
     text-align: center;
     position  : absolute;
     margin    : auto;
@@ -78,13 +69,18 @@
     right     : 0;
 }
 
-.intro-text-small {
-    display: none;
+.start .intro-text-small {
+    display         : none;
     background-color: #fff;
-    color: #000;
-    text-align: center;
-    padding-top: 1rem;
-    z-index: 1;
+    color           : #000;
+    text-align      : center;
+    padding-top     : 1rem;
+    z-index         : 1;
+}
+
+.start .carousel-caption {
+    top   : 0px;
+    bottom: inherit;
 }
 
 .work .standing {
@@ -97,26 +93,26 @@
 
 .work .image-wrapper {
     position: relative; 
-    margin       : 0.5%;
-    display      : inline-block;
+    margin  : 0.5%;
+    display : inline-block;
 }
 
 .work .image-overlay {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    height: 100%;
-    color: #fff;
+    position        : absolute;
+    z-index         : 1;
+    width           : 100%;
+    text-align      : center;
+    cursor          : pointer;
+    height          : 100%;
+    color           : #fff;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
 .work .image-overlay .content {
-    position: relative;
-    float: left;
-    top: 50%;
-    left: 50%;
+    position : relative;
+    float    : left;
+    top      : 50%;
+    left     : 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -132,24 +128,24 @@
 
 .project img.absolute {
     position: absolute;
-    left: 0;
+    left    : 0;
 }
 
 .project .image-wrapper {
-    margin: 0 -15px;
+    margin  : 0 -15px;
     position: relative;
 }
 
 .project div.controls {
-    z-index: 10;
+    z-index : 10;
     position: absolute;
-    width: 100px;
-    bottom: 5%;
+    width   : 100px;
+    bottom  : 5%;
 }
 
 .project div.controls label {
     margin-bottom: 0;
-    margin-top: 0.5rem;
+    margin-top   : 0.5rem;
 }
 
 .project .info {
@@ -173,10 +169,6 @@
     margin-bottom: 1rem;
 }
 
-.start .carousel-caption {
-    top: 0px;
-    bottom: inherit;
-}
 
 .alignCenter {
     text-align: center;
@@ -185,6 +177,12 @@
 button {
     margin-top: 0.5rem;
 }
+
+.col-centered {
+    margin: 0 auto;
+    float : none;
+}
+
 
 @media screen and (max-width : 500px) {
     .intro-text-large {
@@ -198,23 +196,29 @@ button {
     .work .standing, .work .laying {
         max-width: 100%;
     }
+
     .work .imagee {
         margin-right: 0;
-    } 
+    }
+
     .project img.invisible {
         display: none;
     }
+
     .project img.absolute {
-       width: 100% !important;
+       width   : 100% !important;
        position: static !important; 
     }
+
     .project .image-wrapper {
         margin-top: 0px !important;
-        margin: inherit;
+        margin    : inherit;
     }
+
     .carousel {
         display: none;
     }
+
     .images-vertical {
         display: block;
     }
