@@ -185,11 +185,11 @@ button {
 
 
 @media screen and (max-width : 500px) {
-    .intro-text-large {
+    .start .intro-text-large {
         display: none;
     }
 
-    .intro-text-small {
+    .start .intro-text-small {
         display: block;
     }
 
@@ -215,11 +215,11 @@ button {
         margin    : inherit;
     }
 
-    .carousel {
+    .start .carousel {
         display: none;
     }
 
-    .images-vertical {
+    .start .images-vertical {
         display: block;
     }
 }
