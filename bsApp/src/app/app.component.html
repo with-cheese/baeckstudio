@@ -3,10 +3,59 @@
   'bgWhite' : page != 'about'
 }">
   <div class="menu" [ngClass]="{ 'animated fadeIn' : animateMenu }">
-    <span (click)="page = 'work'; animateWork()">Work </span>
-    <span (click)="page = 'about'">About </span>
+    <span (click)="page = 'work'; animateWork();">Work </span>
+    <span (click)="page = 'about'; initCarousel();">About </span>
     <span (click)="page = 'contact'">Contact </span>
   </div>
+
+  <!-- START PAGE -->
+  <div class="row start animated fadeIn" *ngIf="page == 'about'">
+    <div class="col-12 div1 animated fadeIn">
+      <img class="img-fluid" src="../assets/photos/startsida_bakgrund.png">
+      <div class="intro-text-large">
+        Welcome to Bäck! A design studio based in Stockholm, Sweden.<br>
+        We offer graphic design, branding and art direction for cultural and commercial
+        clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
+      </div>
+    </div>
+    <div class="col-12 intro-text-small">
+      <p>
+        Welcome to Bäck! A design studio based in Stockholm, Sweden.<br>
+        We offer graphic design, branding and art direction for cultural and commercial
+        clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
+      </p>
+    </div>
+    <ng-container>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <ng-container *ngFor="let image of images; let i = index">
+            <div class="carousel-item active" [class.active]="i == 0">
+              <div class="carousel-caption">
+                <div>{{ image.title }}</div>
+                <div>{{ image.subtitle }}</div>
+              </div>
+              <a href="#carouselExampleIndicators" data-slide="next">
+                <img class="d-block w-100" src="../assets/photos/{{ image.name }}" alt="First slide">
+              </a>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+    <div class="images-vertical">
+      <ng-container *ngFor="let image of images; let i = index">
+        <div class="col-12 div1 hidden">
+          <div class="title-wrapper animated fadeIn">
+            <div class="title" (click)="checkImageDimension(image.name)">{{ image.title }}</div>
+            <div class="sub-title">{{ image.subtitle }}</div>
+          </div>
+          <img class="img-fluid" src="../assets/photos/{{image.name}}">
+        </div> 
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- WORK PAGE -->
   <div class="row work animated fadeIn" *ngIf="page == 'work'">
     <div class="col-sm-12 div2">
       <br>
@@ -26,7 +75,10 @@
               <div *ngIf="image.overlay == true"
                 class="image-overlay animated faster fadeIn"
                 (click)="getProject(); image.overlay = false;">
-                test
+                <div class="content">
+                  <div>{{ image.title }}</div>
+                  <div>{{ image.subtitle }}</div>
+                </div>
               </div>
               <div class="imagee"
                 (mouseover)="showOverlay(image)" 
@@ -40,62 +92,15 @@
       </div>
     </div>
   </div>
-  <div class="row start animated fadeIn" *ngIf="page == 'about'">
-    <div class="col-12 div1 animated fadeIn">
-      <img class="img-fluid" src="../assets/photos/startsida_bakgrund.png">
-      <div class="intro-text">
-        Welcome to Bäck! A design studio based in Stockholm, Sweden.<br>
-        We offer graphic design, branding and art direction for cultural and commercial
-        clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
-      </div>
-    </div> 
-    <ng-container>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <!-- ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol -->
-        <div class="carousel-inner">
-          <ng-container *ngFor="let image of images; let i = index">
-            <div class="carousel-item active" [class.active]="i == 0">
-              <div class="carousel-caption">
-                <div>{{ image.title }}</div>
-                <div>{{ image.subtitle }}</div>
-              </div>
-              <img class="d-block w-100" src="../assets/photos/{{ image.name }}" alt="First slide">
-            </div>
-          </ng-container>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </ng-container>
-    <div class="images-vertical">
-      <ng-container *ngFor="let image of images; let i = index">
-        <div class="col-12 div1 hidden">
-          <div class="title-wrapper animated fadeIn">
-            <div class="title" (click)="checkImageDimension(image.name)">{{ image.title }}</div>
-            <div class="sub-title">{{ image.subtitle }}</div>
-          </div>
-          <img class="img-fluid" src="../assets/photos/{{image.name}}">
-        </div> 
-      </ng-container>
-    </div>
-  </div>
+
+  <!-- CONTACT PAGE -->
   <div class="row kontakt animated fadeIn" *ngIf="page == 'contact'">
-    <div class="col-sm-12 div2">
+    <div class="col-sm-8 col-centered alignCenter">
       <br>
       <br>
       <br>
       <br>
-      <span>Kontakt Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse

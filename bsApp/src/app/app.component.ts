@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ApiService } from './api.service';
+declare var externalJS: any;
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
     {name: 'bildspel_08.png', title: 'Swedish Grace', subtitle: 'Book Design'},
     {name: 'bildspel_09.png', title: 'Vi hade fel', subtitle: 'Book Design'},
     {name: 'bildspel_10.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-  	{name: 'bildspel_11.png', title: 'Swedish Grace', subtitle: 'Book Design'}
+    {name: 'bildspel_11.png', title: 'Swedish Grace', subtitle: 'Book Design'}
   ];
 
   imagesOversikt: any[] = [
@@ -72,10 +73,9 @@ export class AppComponent implements OnInit {
 
   constructor(private apiService: ApiService) {}
 
-
   ngOnInit() {
     setTimeout(() => { window.scroll(0,0); }, 400);
-  	setTimeout(() => { this.animateMenu = true; }, 500);
+    setTimeout(() => { this.animateMenu = true; }, 500);
     this.getWorks();
   }
 
@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
   }
 
   getUrl(name: string) {
-  	return 'url(../assets/photos/' + name + ')';
+    return 'url(../assets/photos/' + name + ')';
   }
 
   isStanding(name: string) {
@@ -104,6 +104,10 @@ export class AppComponent implements OnInit {
   getProject() {
     this.page = 'project';
     this.selectedProject = this.theEye;
+  }
+
+  initCarousel() {
+    setTimeout(() => { externalJS.initCarousel(); }, 500);
   }
 
 
@@ -151,7 +155,6 @@ export class AppComponent implements OnInit {
 
   adjustImage(value: number, id: number, type: string) {
     const index = this.theEye.images.findIndex(obj => obj.id == id);
-    console.log(index);
     this.theEye.images[index][type] = value;
   }
 
@@ -171,7 +174,6 @@ export class AppComponent implements OnInit {
       let elem = document.getElementById(id);
       if (elem) {
         let top = elem.scrollTop;
-        console.log(top);
         if (top > window.innerHeight) {
           return true;
         }
@@ -181,7 +183,6 @@ export class AppComponent implements OnInit {
 
   devmode() {
     this.debug = !this.debug;
-    console.log(this);
   }
 
 }

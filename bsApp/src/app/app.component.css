@@ -68,7 +68,7 @@
     width      : 100%;
 }
 
-.intro-text {
+.intro-text-large {
     text-align: center;
     position  : absolute;
     margin    : auto;
@@ -76,6 +76,15 @@
     max-width : 35rem;
     left      : 0;
     right     : 0;
+}
+
+.intro-text-small {
+    display: none;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding-top: 1rem;
+    z-index: 1;
 }
 
 .work .standing {
@@ -100,7 +109,15 @@
     cursor: pointer;
     height: 100%;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.work .image-overlay .content {
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .work  .transparent { opacity: 0; }
@@ -161,11 +178,23 @@
     bottom: inherit;
 }
 
+.alignCenter {
+    text-align: center;
+}
+
 button {
     margin-top: 0.5rem;
 }
 
 @media screen and (max-width : 500px) {
+    .intro-text-large {
+        display: none;
+    }
+
+    .intro-text-small {
+        display: block;
+    }
+
     .work .standing, .work .laying {
         max-width: 100%;
     }
