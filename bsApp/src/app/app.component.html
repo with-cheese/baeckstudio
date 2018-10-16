@@ -1,18 +1,18 @@
 <div class="container-fluid" [ngClass]="{
-  'bg-dark' : page == 'about',
-  'bg-white' : page != 'about'
+  'bg-dark' : page == 'back',
+  'bg-white' : page != 'back'
 }">
 
   <!-- MENU -->
   <div class="menu" [ngClass]="{ 'animated fadeIn' : animateMenu }">
+    <span (click)="page = 'back'; initCarousel();">Bäck </span>
     <span (click)="page = 'work'; animateWork();">Work </span>
-    <span (click)="page = 'about'; initCarousel();">About </span>
-    <span (click)="page = 'contact'">Contact </span>
+    <span (click)="page = 'about'">About </span>
   </div>
 
 
   <!-- START PAGE -->
-  <div class="row start animated fadeIn" *ngIf="page == 'about'">
+  <div class="row start animated fadeIn" *ngIf="page == 'back'">
     <div class="col-12 div1 animated fadeIn">
       <img class="img-fluid" src="../assets/photos/startsida_bakgrund.png">
       <div class="intro-text-large">
@@ -37,9 +37,7 @@
                 <div>{{ image.title }}</div>
                 <div>{{ image.sub_title }}</div>
               </div>
-              <a href="#carouselExampleIndicators" data-slide="next">
-                <img class="d-block w-100" src="../assets/photos/{{ image.file_name }}" alt="First slide">
-              </a>
+              <img class="d-block w-100 clickable" src="../assets/photos/{{ image.file_name }}" alt="First slide" (click)="getProject()">
             </div>
           </ng-container>
         </div>
@@ -52,7 +50,7 @@
             <div class="title" (click)="checkImageDimension(image.file_name)">{{ image.title }}</div>
             <div class="sub-title">{{ image.sub_title }}</div>
           </div>
-          <img class="img-fluid" src="../assets/photos/{{image.file_name}}">
+          <img class="img-fluid clickable" src="../assets/photos/{{image.file_name}}" (click)="getProject()">
         </div>
       </ng-container>
     </div>
@@ -67,7 +65,7 @@
       <br>
       <br>
       <div class="row">
-        <div class="col-md-8 col-centered">
+        <div class="col-md-10 col-centered">
           <ng-container *ngFor="let image of imagesOversikt">
             <div class="image-wrapper transparent"
               [ngClass]="{
@@ -98,8 +96,8 @@
   </div>
 
 
-  <!-- CONTACT PAGE -->
-  <div class="row kontakt animated fadeIn" *ngIf="page == 'contact'">
+  <!-- ABOUT PAGE -->
+  <div class="row kontakt animated fadeIn" *ngIf="page == 'about'">
     <div class="col-sm-8 col-centered alignCenter">
       <br>
       <br>

@@ -19,8 +19,7 @@ export class ApiService  {
     fetch(resource: string): Observable <any[]> {
       const params = new HttpParams();
       let url: string = this.baseUrl + resource;
-      return this.http.get(url)
-        .pipe(map(this.getData);
+      return this.http.get(url).pipe(map(this.getData));
     }
 
     private getData(res: any) {

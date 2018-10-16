@@ -174,9 +174,8 @@
 }
 
 
-.alignCenter {
-    text-align: center;
-}
+.alignCenter { text-align: center; }
+.clickable { cursor: pointer; }
 
 button {
     margin-top: 0.5rem;
