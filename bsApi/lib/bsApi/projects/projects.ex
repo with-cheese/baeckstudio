@@ -114,7 +114,7 @@ defmodule BsApi.Projects do
 
   """
   def list_work_images do
-    Repo.all(WorkImage)
+    Repo.all(from wi in WorkImage, where: wi.active == true)
   end
 
   @doc """

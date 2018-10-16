@@ -35,10 +35,10 @@
             <div class="carousel-item active" [class.active]="i == 0">
               <div class="carousel-caption">
                 <div>{{ image.title }}</div>
-                <div>{{ image.subtitle }}</div>
+                <div>{{ image.sub_title }}</div>
               </div>
               <a href="#carouselExampleIndicators" data-slide="next">
-                <img class="d-block w-100" src="../assets/photos/{{ image.name }}" alt="First slide">
+                <img class="d-block w-100" src="../assets/photos/{{ image.file_name }}" alt="First slide">
               </a>
             </div>
           </ng-container>
@@ -49,11 +49,11 @@
       <ng-container *ngFor="let image of images; let i = index">
         <div class="col-12 div1 hidden">
           <div class="title-wrapper animated fadeIn">
-            <div class="title" (click)="checkImageDimension(image.name)">{{ image.title }}</div>
-            <div class="sub-title">{{ image.subtitle }}</div>
+            <div class="title" (click)="checkImageDimension(image.file_name)">{{ image.title }}</div>
+            <div class="sub-title">{{ image.sub_title }}</div>
           </div>
-          <img class="img-fluid" src="../assets/photos/{{image.name}}">
-        </div> 
+          <img class="img-fluid" src="../assets/photos/{{image.file_name}}">
+        </div>
       </ng-container>
     </div>
   </div>
@@ -71,9 +71,9 @@
           <ng-container *ngFor="let image of imagesOversikt">
             <div class="image-wrapper transparent"
               [ngClass]="{
-                'animated fadeInDown' : inAnimateThis(image.name),
-                'standing' : isStanding(image.name) == true,
-                'laying' : isStanding(image.name) == false
+                'animated fadeInDown' : inAnimateThis(image.file_name),
+                'standing' : isStanding(image.file_name) == true,
+                'laying' : isStanding(image.file_name) == false
               }"
               (mouseleave)="image.overlay = false">
               <div *ngIf="image.overlay == true"
@@ -81,14 +81,14 @@
                 (click)="getProject(); image.overlay = false;">
                 <div class="content">
                   <div>{{ image.title }}</div>
-                  <div>{{ image.subtitle }}</div>
+                  <div>{{ image.sub_title }}</div>
                 </div>
               </div>
               <div class="imagee"
-                (mouseover)="showOverlay(image)" 
+                (mouseover)="showOverlay(image)"
                 (click)="image.overlay = !image.overlay">
                 <img class="img-fluid"
-                  src="../assets/photos/oversikt/{{image.name}}">
+                  src="../assets/photos/oversikt/{{image.file_name}}">
               </div>
             </div>
           </ng-container>
@@ -135,29 +135,29 @@
         <img
           id="{{image.id}}" class="absolute hidden"
           [ngClass]="{
-            'animated fadeIn' : inAnimateThis(image.name),
+            'animated fadeIn' : inAnimateThis(image.file_name),
             'hidden' : i > 1
           }"
           [ngStyle]="{
-            'width': (image.width + '%'), 
-            'left': (image.alignment == 'left' ? (image.distance + '%') : 'inherit'), 
-            'right': (image.alignment == 'right' ? (image.distance + '%') : 'inherit') 
+            'width': (image.width + '%'),
+            'left': (image.alignment == 'left' ? (image.distance + '%') : 'inherit'),
+            'right': (image.alignment == 'right' ? (image.distance + '%') : 'inherit')
           }"
           src="../assets/photos/projects/{{image.url}}">
         <div class="controls" *ngIf="debug">
           <ng-container>
             <label>Width</label>
-            <input class="form-control" type="number" value="{{ image.width }}" name="" 
+            <input class="form-control" type="number" value="{{ image.width }}" name=""
             (change)="adjustImage($event.target.value, image.id, 'width')">
           </ng-container>
           <ng-container>
             <label>Distance</label>
-            <input class="form-control" type="number" value="{{ image.distance }}" name="{{ image.distance }}" 
+            <input class="form-control" type="number" value="{{ image.distance }}" name="{{ image.distance }}"
             (change)="adjustImage($event.target.value, image.id, 'distance')">
           </ng-container>
           <ng-container>
             <label>Top</label>
-            <input class="form-control" type="number" value="{{ image.top }}" name="{{ image.top }}" 
+            <input class="form-control" type="number" value="{{ image.top }}" name="{{ image.top }}"
             (change)="adjustImage($event.target.value, image.id, 'top')">
           </ng-container>
           <button type="button" class="btn btn-secondary" (click)="changeAlignment(image)">{{ image.alignment }}</button>

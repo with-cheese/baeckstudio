@@ -10,42 +10,27 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class ApiService  {
 
-    private baseUrl: string = 'http://35.228.169.12/api/';
-    // private baseUrl: string = 'http://' + window.location.hostname + '/api/';
+    //private baseUrl: string = 'http://35.228.169.12/api/';
+    private baseUrl: string = 'http://' + window.location.hostname + ':4200/api/';
 
 
     constructor(private http: HttpClient) { }
 
     fetch(resource: string): Observable <any[]> {
-        // GET
-        const params = new HttpParams();
-        let url: string = this.baseUrl + resource;
-
-        return this.http.get(url)
-            .pipe(map(this.extractData));    
+      const params = new HttpParams();
+      let url: string = this.baseUrl + resource;
+      return this.http.get(url)
+        .pipe(map(this.getData);
     }
 
-    private extractData(res: any) {
-        const body = res.json();
-        if (body.data === null) {
-            return [];
-        }
-        const result: object  = {
-            data: body.data,
-            meta: body.meta
-        };
-        return [result] || [];
+    private getData(res: any) {
+      if(res.data === null) {
+          return [];
+      }
+      const result: object  = {
+          data: res.data,
+      };
+      return [result] || [];
     }
 
-    private handleError (error: Response | any) {
-        let errMsg: string;
-
-        if (typeof error._body != 'undefined') {
-            try {
-                error._body = JSON.parse(error._body);
-            } catch (e) {
-                error._body = '';
-            }
-        }
-    }
 }

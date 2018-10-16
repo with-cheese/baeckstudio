@@ -3,3 +3,9 @@ pg_ctl -D /usr/local/var/postgres start
 
 ### manual stop postgres on macos
 pg_ctl -D /usr/local/var/postgres stop
+
+### start mix phoenix.server detached
+MIX_ENV=prod PORT=4001 elixir --detached -S mix phoenix.server
+
+## phoenix deployment
+https://hexdocs.pm/phoenix/deployment.html

@@ -14,10 +14,14 @@ export class AppComponent implements OnInit {
   selectedProject = null;
   animateMenu = false;
   debug = false;
-  works: any;
+  works: any[];
+  images: any[];
   animateThis: string[] = [];
 
-  images: any[] = [
+
+  /*images: any[] = [
+    {file_name: 'bildspel_01.png', title: 'The Eye', sub_title: 'Book Design'}];*/
+  /*images: any[] = [
     {name: 'bildspel_01.png', title: 'The Eye', subtitle: 'Book Design'},
     {name: 'bildspel_02.png', title: 'Näfveqvarn', subtitle: 'Identity Redesign'},
     {name: 'bildspel_03.png', title: 'Om Döden', subtitle: 'Book Design'},
@@ -29,31 +33,31 @@ export class AppComponent implements OnInit {
     {name: 'bildspel_09.png', title: 'Vi hade fel', subtitle: 'Book Design'},
     {name: 'bildspel_10.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
     {name: 'bildspel_11.png', title: 'Swedish Grace', subtitle: 'Book Design'}
-  ];
+  ];*/
 
   imagesOversikt: any[] = [
-    {name: '1.png', title: 'The Eye', subtitle: 'Book Design'},
-    {name: '2.png', title: 'Näfveqvarn', subtitle: 'Identity Redesign'},
-    {name: '3.png', title: 'Om Döden', subtitle: 'Book Design'},
-    {name: '4.png', title: '+Rolf', subtitle: 'Identity' },
-    {name: '5.png', title: 'The Eye', subtitle: 'Book Design'},
-    {name: '6.png', title: 'Vi hade fel', subtitle: 'Book Design'},
-    {name: '7.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '8.png', title: 'Swedish Grace', subtitle: 'Book Design'},
-    {name: '9.png', title: 'Vi hade fel', subtitle: 'Book Design'},
-    {name: '10.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '11.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '12.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '13.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '14.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '15.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '16.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '17.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '18.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '19.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '20.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '21.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: '22.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
+    {file_name: '1.png', title: 'The Eye', sub_title: 'Book Design'},
+    {file_name: '2.png', title: 'Näfveqvarn', sub_title: 'Identity Redesign'},
+    {file_name: '3.png', title: 'Om Döden', sub_title: 'Book Design'},
+    {file_name: '4.png', title: '+Rolf', sub_title: 'Identity' },
+    {file_name: '5.png', title: 'The Eye', sub_title: 'Book Design'},
+    {file_name: '6.png', title: 'Vi hade fel', sub_title: 'Book Design'},
+    {file_name: '7.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '8.png', title: 'Swedish Grace', sub_title: 'Book Design'},
+    {file_name: '9.png', title: 'Vi hade fel', sub_title: 'Book Design'},
+    {file_name: '10.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '11.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '12.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '13.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '14.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '15.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '16.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '17.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '18.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '19.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '20.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '21.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: '22.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
   ];
 
   theEye: any = {
@@ -77,6 +81,7 @@ export class AppComponent implements OnInit {
     setTimeout(() => { window.scroll(0,0); }, 400);
     setTimeout(() => { this.animateMenu = true; }, 500);
     this.getWorks();
+    this.getImages();
   }
 
   getWorks() {
@@ -84,8 +89,14 @@ export class AppComponent implements OnInit {
         .subscribe(result      => this.works = result[0].data,
                    error       => { },
                    ()          => {
-                       console.log(this.works)
                    });
+  }
+
+  getImages() {
+    this.apiService.fetch('works/images')
+      .subscribe(result      => { this.images = result[0].data; },
+                 error       => { },
+                 ()          => { });
   }
 
   getUrl(name: string) {

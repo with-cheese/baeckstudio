@@ -12,6 +12,9 @@ defmodule BsApiWeb.WorkImageView do
 
   def render("work_image.json", %{work_image: work_image}) do
     %{id: work_image.id,
-      file_name: work_image.file_name}
+      file_name: work_image.file_name,
+      title: work_image.title,
+      work_id: work_image.work_id,
+      sub_title: work_image.sub_title}
   end
 end

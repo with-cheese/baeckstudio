@@ -19,4 +19,5 @@ defmodule BsApi.Projects.WorkImage do
     |> cast(attrs, [:file_name])
     |> validate_required([:file_name])
   end
+
 end
