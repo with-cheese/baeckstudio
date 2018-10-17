@@ -9,7 +9,7 @@ declare var externalJS: any;
 })
 export class AppComponent implements OnInit {
   title = 'baeck';
-  page = 'about';
+  page = 'back';
   aIndex = 0;
   selectedProject = null;
   animateMenu = false;
@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
   }
 
   getImages() {
-    this.apiService.fetch('works/images')
+    this.apiService.fetch('works/images/slides')
       .subscribe(result      => { this.images = result[0].data; },
                  error       => { },
                  ()          => { });

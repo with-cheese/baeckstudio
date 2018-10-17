@@ -9,6 +9,7 @@ defmodule BsApi.Projects.WorkImage do
     field :title, :string
     field :sub_title, :string
     field :active, :boolean
+    field :type, :string
 
     timestamps()
   end

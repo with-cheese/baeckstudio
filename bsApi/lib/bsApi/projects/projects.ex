@@ -113,8 +113,8 @@ defmodule BsApi.Projects do
       [%WorkImage{}, ...]
 
   """
-  def list_work_images do
-    Repo.all(from wi in WorkImage, where: wi.active == true)
+  def list_slides do
+    Repo.all(from wi in WorkImage, where: wi.active == true and wi.type == "slide")
   end
 
   @doc """

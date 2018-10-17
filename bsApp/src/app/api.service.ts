@@ -10,9 +10,8 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class ApiService  {
 
-    //private baseUrl: string = 'http://35.228.169.12/api/';
-    private baseUrl: string = 'http://' + window.location.hostname + ':4200/api/';
-
+    private baseUrl: string = 'http://35.228.169.12/api/';
+    //private baseUrl: string = 'http://' + window.location.hostname + ':4200/api/';
 
     constructor(private http: HttpClient) { }
 
