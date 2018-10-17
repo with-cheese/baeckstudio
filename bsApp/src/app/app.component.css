@@ -1,6 +1,9 @@
+a {
+    color: black;
+}
+
 .container-fluid.bg-dark {
     background-color: #333;
-    min-height      : 1000px;
 }
 
 .container-fluid.bg-white {
@@ -59,22 +62,11 @@
     width      : 100%;
 }
 
-.start .intro-text-large {
-    text-align: center;
-    position  : absolute;
-    margin    : auto;
-    bottom    : 1rem;
-    max-width : 35rem;
-    left      : 0;
-    right     : 0;
-}
-
 .start .intro-text-small {
-    display         : none;
     background-color: #fff;
     color           : #000;
     text-align      : center;
-    padding-top     : 1rem;
+    padding         : 2rem 1rem;
     z-index         : 1;
 }
 
@@ -101,7 +93,12 @@
     display : inline-block;
 }
 
-.work .image-overlay {
+.start .image-wrapper {
+    position: relative; 
+    display : inline-block;
+}
+
+.image-overlay {
     position        : absolute;
     z-index         : 1;
     width           : 100%;
@@ -112,7 +109,7 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.work .image-overlay .content {
+.image-overlay .content {
     position : relative;
     float    : left;
     top      : 50%;
@@ -120,7 +117,10 @@
     transform: translate(-50%, -50%);
 }
 
-.work  .transparent { opacity: 0; }
+.work  .transparent, 
+.start .transparent { 
+    opacity: 0; 
+}
 
 .project .image-wrapper.debug {
     border-bottom: 3px solid #888;
@@ -173,6 +173,17 @@
     margin-bottom: 1rem;
 }
 
+.about .column-1, .about .column-2 {
+    margin-bottom: 2rem;
+}
+
+.about .column-1 {
+    padding-right: 30px;
+}
+
+.about .column-2 {
+    padding-left: 30px;
+}
 
 .alignCenter { text-align: center; }
 .clickable { cursor: pointer; }
@@ -187,13 +198,9 @@ button {
 }
 
 
-@media screen and (max-width : 500px) {
-    .start .intro-text-large {
+@media screen and (max-width : 575px) {
+    .hide-on-small {
         display: none;
-    }
-
-    .start .intro-text-small {
-        display: block;
     }
 
     .work .standing, .work .laying {
@@ -224,5 +231,13 @@ button {
 
     .start .images-vertical {
         display: block;
+    }
+
+    .about .column-1 {
+        padding-right: 15px;
+    }
+
+    .about .column-2 {
+        padding-left: 15px;
     }
 }

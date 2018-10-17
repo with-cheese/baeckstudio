@@ -15,18 +15,9 @@
   <div class="row start animated fadeIn" *ngIf="page == 'back'">
     <div class="col-12 div1 animated fadeIn">
       <img class="img-fluid" src="../assets/photos/startsida_bakgrund.png">
-      <div class="intro-text-large">
-        Welcome to Bäck! A design studio based in Stockholm, Sweden.<br>
-        We offer graphic design, branding and art direction for cultural and commercial
-        clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
-      </div>
     </div>
-    <div class="col-12 intro-text-small">
-      <p>
-        Welcome to Bäck! A design studio based in Stockholm, Sweden.<br>
-        We offer graphic design, branding and art direction for cultural and commercial
-        clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
-      </p>
+    <div class="col-12">
+      
     </div>
     <ng-container>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -45,21 +36,37 @@
     </ng-container>
     <div class="images-vertical">
       <ng-container *ngFor="let image of images; let i = index">
-        <div class="col-12 div1 hidden">
-          <div class="title-wrapper animated fadeIn">
-            <div class="title" (click)="checkImageDimension(image.file_name)">{{ image.title }}</div>
-            <div class="sub-title">{{ image.sub_title }}</div>
+        <div class="image-wrapper"
+          (mouseleave)="image.overlay = false">
+          <div class="col-12 div1 hidden">
+            <div *ngIf="image.overlay == true"
+                class="image-overlay animated faster fadeIn"
+                (click)="getProject(); image.overlay = false;">
+                <div class="content">
+                  <div>{{ image.title }}</div>
+                  <div>{{ image.sub_title }}</div>
+                </div>
+            </div>
+            <div class="imagee"
+              (mouseover)="showOverlay(image)"
+              (click)="image.overlay = !image.overlay">
+              <img class="img-fluid clickable" src="../assets/photos/{{image.file_name}}" (click)="getProject()">
+            </div>
           </div>
-          <img class="img-fluid clickable" src="../assets/photos/{{image.file_name}}" (click)="getProject()">
         </div>
       </ng-container>
+    </div>
+    <div class="col-sm-12 intro-text-small">
+        <span class="hide-on-small">Welcome to Bäck! A design studio based in Stockholm, Sweden.<br></span>
+        We offer graphic design, branding and art direction for cultural and commercial
+        clients. For inquiries contact info@baeck.studio or visit us at Atlasgatan 14
     </div>
   </div>
 
 
   <!-- WORK-OVERVIEW PAGE -->
   <div class="row work animated fadeIn" *ngIf="page == 'work'">
-    <div class="col-sm-12 div2">
+    <div class="col-sm-12">
       <br>
       <br>
       <br>
@@ -97,18 +104,52 @@
 
 
   <!-- ABOUT PAGE -->
-  <div class="row kontakt animated fadeIn" *ngIf="page == 'about'">
-    <div class="col-sm-8 col-centered alignCenter">
+  <div class="row about animated fadeIn" *ngIf="page == 'about'">
+    <div class="col-sm-11 col-centered">
       <br>
       <br>
       <br>
       <br>
-      <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+      <div class="row">
+        <div class="col-sm-6 column-1">
+          <p>Founded 2017 by Josefin Gahmberg and Clara Lidström, Bäck specialises in graphic design, branding and art direction. Their work includes publications, exhibition design, brand identities and digital solutions. Josefin and Clara studied at Berghs School of Communication (2011–2013) and have previously worked for agencies such as BankerWessel, Frankenstein Studio, ill Studio, Stockholm Graphics, Vice and MnO. For a meeting or inquires please contact info@baeck.studio<br><br></p>
+
+          <p>Clients/Collaborations<br>
+          <br>
+          Näfveqvarn, +Rolf, Kartago, Natur & Kultur, Orosdi-Back, Norstedts, Folke Film, Barnombudsmannen, Stiftelsen Allmänna Barnhuset, Rådrum, Slutet är nära, Jubel, Emma Fällman Studio, Comentor, Stockholm Graphics, Lars Arrhenius, Fotografiska, Moderna Museet, Domus, Fredrik Augustsson, tidningen Faktum, Junibacken och Kulturhuset Stadsteatern</p>
+        </div>
+        <div class="col-sm-6 column-2">
+          <p>
+            Bäck<br>
+            Atlasgatan 14<br>
+            113 20 Stockholm, Sweden<br>
+            info@baeck.studio<br>
+            <br>
+          </p>
+          <p>
+            For business inquiries please contact:
+          </p>
+            
+          <p>info@baeck.studio</p>
+
+          <p>
+            Clara Lidström<br>
+            +46 76 942 91 90<br>
+            clara@baeck.studio<br>
+          </p>
+
+          <p>
+            Josefin Gahmberg<br>
+            +46 70 327 13 10<br>
+            josefin@baeck.studio<br>
+            <br>
+          </p>
+
+          <p>Follow Bäck</p>
+            
+            <a href="https://www.instagram.com/baeckstudio/" target="_blank">Instagram</a>
+        </div>
+      </div>
     </div>
   </div>
 
