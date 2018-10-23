@@ -7,5 +7,8 @@ pg_ctl -D /usr/local/var/postgres stop
 ### start mix phoenix.server detached
 MIX_ENV=prod PORT=4001 elixir --detached -S mix phoenix.server
 
+### ecto.migrate
+MIX_ENV=prod mix ecto.migrate
+
 ## phoenix deployment
 https://hexdocs.pm/phoenix/deployment.html

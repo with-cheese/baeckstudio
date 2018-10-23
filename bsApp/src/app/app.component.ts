@@ -15,25 +15,25 @@ export class AppComponent implements OnInit {
   animateMenu = false;
   debug = false;
   works: any[];
-  images: any[];
+  //images: any[];
   animateThis: string[] = [];
 
 
   /*images: any[] = [
     {file_name: 'bildspel_01.png', title: 'The Eye', sub_title: 'Book Design'}];*/
-  /*images: any[] = [
-    {name: 'bildspel_01.png', title: 'The Eye', subtitle: 'Book Design'},
-    {name: 'bildspel_02.png', title: 'Näfveqvarn', subtitle: 'Identity Redesign'},
-    {name: 'bildspel_03.png', title: 'Om Döden', subtitle: 'Book Design'},
-    {name: 'bildspel_04.png', title: '+Rolf', subtitle: 'Identity' },
-    {name: 'bildspel_05.png', title: 'The Eye', subtitle: 'Book Design'},
-    {name: 'bildspel_06.png', title: 'Vi hade fel', subtitle: 'Book Design'},
-    {name: 'bildspel_07.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: 'bildspel_08.png', title: 'Swedish Grace', subtitle: 'Book Design'},
-    {name: 'bildspel_09.png', title: 'Vi hade fel', subtitle: 'Book Design'},
-    {name: 'bildspel_10.png', title: 'Emma Fällman', subtitle: 'Art Direction'},
-    {name: 'bildspel_11.png', title: 'Swedish Grace', subtitle: 'Book Design'}
-  ];*/
+  images: any[] = [
+    {file_name: 'bildspel_01.png', title: 'The Eye', sub_title: 'Book Design'},
+    {file_name: 'bildspel_02.png', title: 'Näfveqvarn', sub_title: 'Identity Redesign'},
+    {file_name: 'bildspel_03.png', title: 'Om Döden', sub_title: 'Book Design'},
+    {file_name: 'bildspel_04.png', title: '+Rolf', sub_title: 'Identity' },
+    {file_name: 'bildspel_05.png', title: 'The Eye', sub_title: 'Book Design'},
+    {file_name: 'bildspel_06.png', title: 'Vi hade fel', sub_title: 'Book Design'},
+    {file_name: 'bildspel_07.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: 'bildspel_08.png', title: 'Swedish Grace', sub_title: 'Book Design'},
+    {file_name: 'bildspel_09.png', title: 'Vi hade fel', sub_title: 'Book Design'},
+    {file_name: 'bildspel_10.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
+    {file_name: 'bildspel_11.png', title: 'Swedish Grace', sub_title: 'Book Design'}
+  ];
 
   imagesOversikt: any[] = [
     {file_name: '1.png', title: 'The Eye', sub_title: 'Book Design'},
@@ -80,8 +80,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => { window.scroll(0,0); }, 400);
     setTimeout(() => { this.animateMenu = true; }, 500);
-    this.getWorks();
-    this.getImages();
+    //this.getWorks();
+    //this.getImages();
   }
 
   getWorks() {

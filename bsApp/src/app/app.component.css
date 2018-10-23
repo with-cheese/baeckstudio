@@ -2,12 +2,15 @@ a {
     color: black;
 }
 
+.bg-dark {
+    background-color: transparent !important;
+}
+
 .container-fluid.bg-dark {
-    background-color: #333;
+    background-color: rgba(0,0,0,0.05);
 }
 
 .container-fluid.bg-white {
-    background-color: #fff;
     color           : #000;
 }
 
@@ -19,8 +22,17 @@ a {
     color: #fff;
 }
 
+.about {
+    min-height: 2000px;
+}
+
+.work, .project, .about {
+    background-color: rgba(0,0,0,0.05);
+}
+
 .menu {
-    font-size   : 1.1rem;
+    letter-spacing: 0.01rem;
+    font-size   : 1rem;
     word-spacing: 1.1rem;
     opacity     : 0;
     margin-left : -15px;
@@ -36,13 +48,15 @@ a {
     cursor: pointer;
 }
 
+.start {
+    letter-spacing: 0.02rem;
+}
 
 .start .div1 {
     background-size: cover;
     width          : 100%;
     background     : no-repeat center center;
     padding        : 0px;
-    box-shadow     : 0rem 1rem 10rem rgba(0,0,0,0.8);
 }
 
 .start .images-vertical {
@@ -63,10 +77,10 @@ a {
 }
 
 .start .intro-text-small {
-    background-color: #fff;
+    background-color: transparent;
     color           : #000;
     text-align      : center;
-    padding         : 2rem 1rem;
+    padding         : 3rem 1rem;
     z-index         : 1;
 }
 
@@ -88,13 +102,13 @@ a {
 }
 
 .work .image-wrapper {
-    position: relative; 
+    position: relative;
     margin  : 0.5%;
     display : inline-block;
 }
 
 .start .image-wrapper {
-    position: relative; 
+    position: relative;
     display : inline-block;
 }
 
@@ -117,9 +131,9 @@ a {
     transform: translate(-50%, -50%);
 }
 
-.work  .transparent, 
-.start .transparent { 
-    opacity: 0; 
+.work  .transparent,
+.start .transparent {
+    opacity: 0;
 }
 
 .project .image-wrapper.debug {
@@ -203,6 +217,10 @@ button {
         display: none;
     }
 
+    .work .image-wrapper {
+        margin-bottom: 0.5rem;
+    }
+
     .work .standing, .work .laying {
         max-width: 100%;
     }
@@ -217,12 +235,13 @@ button {
 
     .project img.absolute {
        width   : 100% !important;
-       position: static !important; 
+       position: static !important;
     }
 
     .project .image-wrapper {
         margin-top: 0px !important;
         margin    : inherit;
+        margin-bottom: 0.5rem;
     }
 
     .start .carousel {
