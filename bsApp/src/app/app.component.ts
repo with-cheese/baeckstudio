@@ -11,17 +11,18 @@ export class AppComponent implements OnInit {
   title = 'baeck';
   page = 'back';
   aIndex = 0;
-  selectedProject = null;
+  selectedProject = {images: []};
   animateMenu = false;
   debug = false;
   works: any[];
-  //images: any[];
+  images: any[];
+  imagesOverview: any[];
   animateThis: string[] = [];
 
 
   /*images: any[] = [
     {file_name: 'bildspel_01.png', title: 'The Eye', sub_title: 'Book Design'}];*/
-  images: any[] = [
+  /*images: any[] = [
     {file_name: 'bildspel_01.png', title: 'The Eye', sub_title: 'Book Design'},
     {file_name: 'bildspel_02.png', title: 'Näfveqvarn', sub_title: 'Identity Redesign'},
     {file_name: 'bildspel_03.png', title: 'Om Döden', sub_title: 'Book Design'},
@@ -33,9 +34,9 @@ export class AppComponent implements OnInit {
     {file_name: 'bildspel_09.png', title: 'Vi hade fel', sub_title: 'Book Design'},
     {file_name: 'bildspel_10.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
     {file_name: 'bildspel_11.png', title: 'Swedish Grace', sub_title: 'Book Design'}
-  ];
+  ];*/
 
-  imagesOversikt: any[] = [
+  /*imagesOversikt: any[] = [
     {file_name: '1.png', title: 'The Eye', sub_title: 'Book Design'},
     {file_name: '2.png', title: 'Näfveqvarn', sub_title: 'Identity Redesign'},
     {file_name: '3.png', title: 'Om Döden', sub_title: 'Book Design'},
@@ -58,9 +59,9 @@ export class AppComponent implements OnInit {
     {file_name: '20.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
     {file_name: '21.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
     {file_name: '22.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-  ];
+  ];*/
 
-  theEye: any = {
+  /*theEye: any = {
     images: [
       {id: 1, url: 'the_eye/The_Eye_02.png', width: 29, alignment: 'left', distance: 10, top: 0},
       {id: 2, url: 'the_eye/The_Eye_01.png', width: 53, alignment: 'right', distance: 0, top: -10},
@@ -73,15 +74,16 @@ export class AppComponent implements OnInit {
     name: 'The eye by fotografiska',
     type: 'Book Design',
     info: 'The Eye is a provocative, absurd, beautiful and revolutionary book celebrating the spirit of Fotografiska – the museum of contemporary photography in Stockholm. The book features work from iconic photographers including Ellen von Unwerth, Anton Corbijn, Sarah Moon and Guy Bourdin as well as interviews, anecdotes and behind-the-scenes stories of past Fotografiska exhibitions. Curator and Creative Director: Johan Lindskog. Published by teNeues 2018.'
-  }
+  }*/
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     setTimeout(() => { window.scroll(0,0); }, 400);
     setTimeout(() => { this.animateMenu = true; }, 500);
-    //this.getWorks();
-    //this.getImages();
+    this.getWorks();
+    this.getSlides();
+    this.getOverview();
   }
 
   getWorks() {
@@ -92,9 +94,23 @@ export class AppComponent implements OnInit {
                    });
   }
 
-  getImages() {
+  getSlides() {
     this.apiService.fetch('works/images/slides')
       .subscribe(result      => { this.images = result[0].data; },
+                 error       => { },
+                 ()          => { });
+  }
+
+  getOverview() {
+    this.apiService.fetch('works/images/overview')
+      .subscribe(result      => { this.imagesOverview = result[0].data; },
+                 error       => { },
+                 ()          => { });
+  }
+
+  getWorkImages(work_id) {
+    this.apiService.fetch('works/' + work_id + '/images')
+      .subscribe(result      => { this.selectedProject.images = result[0].data; },
                  error       => { },
                  ()          => { });
   }
@@ -112,21 +128,27 @@ export class AppComponent implements OnInit {
     return false;
   }
 
-  getProject() {
+  getProject(work_id) {
     this.page = 'project';
-    this.selectedProject = this.theEye;
+    this.selectedProject.images = [];
+    for(let i = 0; i < this.works.length; i++) {
+      if(this.works[i].id === work_id) {
+        this.getWorkImages(work_id);
+        this.selectedProject = this.works[i];
+        break;
+      }
+    }
   }
 
   initCarousel() {
     setTimeout(() => { externalJS.initCarousel(); }, 500);
   }
 
-
   animateWork() {
     window.scrollTo(0, 0);
     this.animateThis = [];
 
-    let order = Array.apply(null, {length: this.imagesOversikt.length}).map(function(value, index){
+    let order = Array.apply(null, {length: this.imagesOverview.length}).map(function(value, index){
       return index + 1;
     });
 
@@ -134,7 +156,7 @@ export class AppComponent implements OnInit {
 
     let index = 0;
     setTimeout(()=> {
-      for (var x = 0, ln = this.imagesOversikt.length; x < ln; x++) {
+      for (var x = 0, ln = this.imagesOverview.length; x < ln; x++) {
         setTimeout(() => {
           let name = order[index] + '.png';
           this.animateThis.push(name);
@@ -165,8 +187,8 @@ export class AppComponent implements OnInit {
   }
 
   adjustImage(value: number, id: number, type: string) {
-    const index = this.theEye.images.findIndex(obj => obj.id == id);
-    this.theEye.images[index][type] = value;
+    //const index = this.theEye.images.findIndex(obj => obj.id == id);
+    //this.theEye.images[index][type] = value;
   }
 
   changeAlignment(image: any) {

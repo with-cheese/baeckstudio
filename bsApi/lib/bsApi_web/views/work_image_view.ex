@@ -15,6 +15,12 @@ defmodule BsApiWeb.WorkImageView do
       file_name: work_image.file_name,
       title: work_image.title,
       work_id: work_image.work_id,
-      sub_title: work_image.sub_title}
+      sub_title: work_image.sub_title,
+      position: work_image.position,
+      folder: work_image.folder,
+      width: work_image.width,
+      alignment: work_image.alignment,
+      distance: work_image.distance,
+      top: work_image.position}
   end
 end

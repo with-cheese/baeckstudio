@@ -25,7 +25,7 @@
                 <div>{{ image.title }}</div>
                 <div>{{ image.sub_title }}</div>
               </div>
-              <img class="d-block w-100 clickable" src="../assets/photos/{{ image.file_name }}" alt="First slide" (click)="getProject()">
+              <img class="d-block w-100 clickable" src="../assets/photos/{{ image.file_name }}" alt="First slide" (click)="getProject(image.work_id)">
             </div>
           </ng-container>
         </div>
@@ -38,7 +38,7 @@
           <div class="col-12 div1 hidden">
             <div *ngIf="image.overlay == true"
                 class="image-overlay animated faster fadeIn"
-                (click)="getProject(); image.overlay = false;">
+                (click)="getProject(image.work_id); image.overlay = false;">
                 <div class="content">
                   <div>{{ image.title }}</div>
                   <div>{{ image.sub_title }}</div>
@@ -47,7 +47,7 @@
             <div class="imagee"
               (mouseover)="showOverlay(image)"
               (click)="image.overlay = !image.overlay">
-              <img class="img-fluid clickable" src="../assets/photos/{{image.file_name}}" (click)="getProject()">
+              <img class="img-fluid clickable" src="../assets/photos/{{image.file_name}}" (click)="getProject(image.work_id)">
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
       <br>
       <div class="row">
         <div class="col-md-10 col-centered">
-          <ng-container *ngFor="let image of imagesOversikt">
+          <ng-container *ngFor="let image of imagesOverview">
             <div class="image-wrapper transparent"
               [ngClass]="{
                 'animated fadeInDown' : inAnimateThis(image.file_name),
@@ -80,7 +80,7 @@
               (mouseleave)="image.overlay = false">
               <div *ngIf="image.overlay == true"
                 class="image-overlay animated faster fadeIn"
-                (click)="getProject(); image.overlay = false;">
+                (click)="getProject(image.work_id); image.overlay = false;">
                 <div class="content">
                   <div>{{ image.title }}</div>
                   <div>{{ image.sub_title }}</div>
@@ -167,7 +167,7 @@
         <img
           class="invisible"
           [ngStyle]="{'width': image.width + '%'}"
-          src="../assets/photos/projects/{{image.url}}">
+          src="../assets/photos/projects/{{ (image.folder != null && image.folder != '') ? (image.folder + '/' + image.file_name) : image.file_name }}">
         <img
           id="{{image.id}}" class="absolute hidden"
           [ngClass]="{
@@ -179,7 +179,7 @@
             'left': (image.alignment == 'left' ? (image.distance + '%') : 'inherit'),
             'right': (image.alignment == 'right' ? (image.distance + '%') : 'inherit')
           }"
-          src="../assets/photos/projects/{{image.url}}">
+          src="../assets/photos/projects/{{ (image.folder != null && image.folder != '') ? (image.folder + '/' + image.file_name) : image.file_name }}">
         <div class="controls" *ngIf="debug">
           <ng-container>
             <label>Width</label>

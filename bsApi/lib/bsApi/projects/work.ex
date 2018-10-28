@@ -2,12 +2,11 @@ defmodule BsApi.Projects.Work do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "works" do
     field :name, :string
     field :active, :boolean
-
-    timestamps()
+    field :type, :string
+    field :info, :string
   end
 
   @doc false
@@ -16,4 +15,5 @@ defmodule BsApi.Projects.Work do
     |> cast(attrs, [:name])
     |> validate_required([:name])
   end
+
 end

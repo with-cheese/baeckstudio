@@ -1,4 +1,4 @@
-defmodule BsApi.Repo.Migrations.AlterWorkImage do
+defmodule BsApi.Repo.Migrations.AlterWorkImages do
   use Ecto.Migration
 
   def change do
