@@ -6,7 +6,7 @@
   <!-- MENU -->
   <div class="menu" [ngClass]="{ 'animated fadeIn' : animateMenu }">
     <span (click)="page = 'back'; initCarousel();">Bäck </span>
-    <span (click)="page = 'work';">Work </span>
+    <span (click)="page = 'work'; animateWork();">Work </span>
     <span (click)="page = 'about'">About </span>
   </div>
 

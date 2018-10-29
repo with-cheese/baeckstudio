@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
   getOverview() {
     this.apiService.fetch('works/images/overview')
-      .subscribe(result      => { this.imagesOverview = result[0].data; this.animateWork(); },
+      .subscribe(result      => { this.imagesOverview = result[0].data; },
                  error       => { },
                  ()          => { });
   }
