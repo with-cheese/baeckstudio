@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
     setTimeout(()=> {
       for (var x = 0, ln = this.imagesOverview.length; x < ln; x++) {
         setTimeout(() => {
-          let name = order[index] + '.png';
+          let name = order[index];
           this.animateThis.push(name);
           index++;
         }, x * 100, x);

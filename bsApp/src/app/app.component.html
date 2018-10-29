@@ -73,7 +73,7 @@
           <ng-container *ngFor="let image of imagesOverview">
             <div class="image-wrapper transparent"
               [ngClass]="{
-                'animated fadeInDown' : inAnimateThis(image.file_name),
+                'animated fadeInDown' : inAnimateThis(image.position),
                 'standing' : isStanding(image.file_name) == true,
                 'laying' : isStanding(image.file_name) == false
               }"
