@@ -19,63 +19,6 @@ export class AppComponent implements OnInit {
   imagesOverview: any[];
   animateThis: string[] = [];
 
-
-  /*images: any[] = [
-    {file_name: 'bildspel_01.png', title: 'The Eye', sub_title: 'Book Design'}];*/
-  /*images: any[] = [
-    {file_name: 'bildspel_01.png', title: 'The Eye', sub_title: 'Book Design'},
-    {file_name: 'bildspel_02.png', title: 'Näfveqvarn', sub_title: 'Identity Redesign'},
-    {file_name: 'bildspel_03.png', title: 'Om Döden', sub_title: 'Book Design'},
-    {file_name: 'bildspel_04.png', title: '+Rolf', sub_title: 'Identity' },
-    {file_name: 'bildspel_05.png', title: 'The Eye', sub_title: 'Book Design'},
-    {file_name: 'bildspel_06.png', title: 'Vi hade fel', sub_title: 'Book Design'},
-    {file_name: 'bildspel_07.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: 'bildspel_08.png', title: 'Swedish Grace', sub_title: 'Book Design'},
-    {file_name: 'bildspel_09.png', title: 'Vi hade fel', sub_title: 'Book Design'},
-    {file_name: 'bildspel_10.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: 'bildspel_11.png', title: 'Swedish Grace', sub_title: 'Book Design'}
-  ];*/
-
-  /*imagesOversikt: any[] = [
-    {file_name: '1.png', title: 'The Eye', sub_title: 'Book Design'},
-    {file_name: '2.png', title: 'Näfveqvarn', sub_title: 'Identity Redesign'},
-    {file_name: '3.png', title: 'Om Döden', sub_title: 'Book Design'},
-    {file_name: '4.png', title: '+Rolf', sub_title: 'Identity' },
-    {file_name: '5.png', title: 'The Eye', sub_title: 'Book Design'},
-    {file_name: '6.png', title: 'Vi hade fel', sub_title: 'Book Design'},
-    {file_name: '7.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '8.png', title: 'Swedish Grace', sub_title: 'Book Design'},
-    {file_name: '9.png', title: 'Vi hade fel', sub_title: 'Book Design'},
-    {file_name: '10.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '11.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '12.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '13.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '14.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '15.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '16.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '17.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '18.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '19.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '20.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '21.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-    {file_name: '22.png', title: 'Emma Fällman', sub_title: 'Art Direction'},
-  ];*/
-
-  /*theEye: any = {
-    images: [
-      {id: 1, url: 'the_eye/The_Eye_02.png', width: 29, alignment: 'left', distance: 10, top: 0},
-      {id: 2, url: 'the_eye/The_Eye_01.png', width: 53, alignment: 'right', distance: 0, top: -10},
-      {id: 3, url: 'the_eye/The_Eye_03.png', width: 50, alignment: 'right', distance: 41, top: 7},
-      {id: 5, url: 'the_eye/The_Eye_05.png', width: 31, alignment: 'right', distance: 0, top: -22},
-      {id: 6, url: 'the_eye/The_Eye_06.png', width: 50, alignment: 'left', distance: 0, top: -12},
-      {id: 7, url: 'the_eye/The_Eye_07.png', width: 66, alignment: 'right', distance: 13, top: 7},
-      {id: 4, url: 'the_eye/The_Eye_04.png', width: 50, alignment: 'right', distance: 0, top: 9}
-      ],
-    name: 'The eye by fotografiska',
-    type: 'Book Design',
-    info: 'The Eye is a provocative, absurd, beautiful and revolutionary book celebrating the spirit of Fotografiska – the museum of contemporary photography in Stockholm. The book features work from iconic photographers including Ellen von Unwerth, Anton Corbijn, Sarah Moon and Guy Bourdin as well as interviews, anecdotes and behind-the-scenes stories of past Fotografiska exhibitions. Curator and Creative Director: Johan Lindskog. Published by teNeues 2018.'
-  }*/
-
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
@@ -121,7 +64,7 @@ export class AppComponent implements OnInit {
 
   isStanding(name: string) {
     let img = new Image();
-    img.src = '../assets/photos/oversikt/' + name;
+    img.src = '../assets/photos/overview/' + name;
     if (img.width < img.height) {
       return true;
     }
