@@ -1,4 +1,4 @@
-defmodule BsApi.Repo.Migrations.AlterTables do
+defmodule BsApi.Repo.Migrations.AlterTablesA do
   use Ecto.Migration
 
   def change do
