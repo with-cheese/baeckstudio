@@ -130,8 +130,8 @@ export class AppComponent implements OnInit {
   }
 
   adjustImage(value: number, id: number, type: string) {
-    //const index = this.theEye.images.findIndex(obj => obj.id == id);
-    //this.theEye.images[index][type] = value;
+    const index = this.selectedProject.images.findIndex(obj => obj.id == id);
+    this.selectedProject.images[index][type] = value;
   }
 
   changeAlignment(image: any) {
