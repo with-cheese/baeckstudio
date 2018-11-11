@@ -21,6 +21,6 @@ defmodule BsApiWeb.WorkImageView do
       width: work_image.width,
       alignment: work_image.alignment,
       distance: work_image.distance,
-      top: work_image.position}
+      top: work_image.top}
   end
 end
