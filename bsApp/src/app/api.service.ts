@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class ApiService  {
 
-    private baseUrl: string = 'https://35.228.169.12/api/';
+    private baseUrl: string = 'https://xn--bck-qla.studio/api/';
 
     constructor(private http: HttpClient) { }
 
