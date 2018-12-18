@@ -75,7 +75,8 @@
               [ngClass]="{
                 'animated fadeInDown' : inAnimateThis(image.position),
                 'standing' : isStanding(image.file_name) == true,
-                'laying' : isStanding(image.file_name) == false
+                'laying' : isStanding(image.file_name) == false,
+                'two-laying' : image.extra_class == '2-laying'
               }"
               (mouseleave)="image.overlay = false">
               <div *ngIf="image.overlay == true"

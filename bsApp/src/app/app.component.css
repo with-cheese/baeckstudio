@@ -101,6 +101,10 @@ a {
     max-width: 48%;
 }
 
+.work .two-laying {
+    max-width: 48.5%;
+}
+
 .work .image-wrapper {
     position: relative;
     margin  : 0.5%;
